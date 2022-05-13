@@ -23,17 +23,17 @@ if(isset($display_link)){
 ?>
 <form method="POST">
 
-    <div class="form-outline m-5">
+    <div class="form-outline ">
         <input type="text" id="groupName" name="apiHost" class="form-control"  />
         <label class="form-label" for="apiHost">Community URL</label>
         <div class="form-helper">https://my-community.disciplemedia.com</div>
     </div>
-    API Key: <input type=text name="apiKey" placeholder="abcdefg123" ><br>
-    <div class="form-outline m-5">
+
+    <div class="form-outline ">
         <input type="text" id="groupName" name="apiKey" class="form-control"  />
         <label class="form-label" for="apiKey">API Key</label>
     </div>
-    <div class="form-outline m-5">
+    <div class="form-outline ">
         <input type="text" id="groupName" name="authenticatedLinkSecret" class="form-control"  />
         <label class="form-label" for="authenticatedLinkSecret">Authenticated Links Shared Secret</label>
     </div>
@@ -42,7 +42,7 @@ if(isset($display_link)){
     <input class="form-check-input" type=checkbox name="visibilityPrivate" checked> Private<br>
     <input class="form-check-input" type=checkbox name="visibilityPublic"> Public<br>
     <input class="form-check-input" type=checkbox name="visibilityMandatory"> Mandatory<br>
-    
+
     <input class="btn btn-primary" type="submit" name="submittedForm" value="Create Link">
 </form>
 
