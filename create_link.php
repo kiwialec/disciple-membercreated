@@ -22,15 +22,28 @@ if(isset($display_link)){
 }
 ?>
 <form method="POST">
-    Community URL: <input type=text name="apiHost" placeholder="https://my-community.disciplemedia.com" ><br>
+
+    <div class="form-outline m-5">
+        <input type="text" id="groupName" name="apiHost" class="form-control"  />
+        <label class="form-label" for="apiHost">Community URL</label>
+        <div class="form-helper">https://my-community.disciplemedia.com</div>
+    </div>
     API Key: <input type=text name="apiKey" placeholder="abcdefg123" ><br>
-    Authenticated Links Shared Secret: <input type=text name="authenticatedLinkSecret" placeholder="abcdefg123" ><br>
+    <div class="form-outline m-5">
+        <input type="text" id="groupName" name="apiKey" class="form-control"  />
+        <label class="form-label" for="apiKey">API Key</label>
+    </div>
+    <div class="form-outline m-5">
+        <input type="text" id="groupName" name="authenticatedLinkSecret" class="form-control"  />
+        <label class="form-label" for="authenticatedLinkSecret">Authenticated Links Shared Secret</label>
+    </div>
     <strong>Allowed Group Types</strong><br>
-    <input type=checkbox name="visibilitySecret" checked> Secret<br>
-    <input type=checkbox name="visibilityPrivate" checked> Private<br>
-    <input type=checkbox name="visibilityPublic"> Public<br>
-    <input type=checkbox name="visibilityMandatory"> Mandatory<br>
-    <input type="submit" name="submittedForm" value="Create Link">
+    <input class="form-check-input" type=checkbox name="visibilitySecret" checked> Secret<br>
+    <input class="form-check-input" type=checkbox name="visibilityPrivate" checked> Private<br>
+    <input class="form-check-input" type=checkbox name="visibilityPublic"> Public<br>
+    <input class="form-check-input" type=checkbox name="visibilityMandatory"> Mandatory<br>
+    
+    <input class="btn btn-primary" type="submit" name="submittedForm" value="Create Link">
 </form>
 
 <?php
