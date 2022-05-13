@@ -18,7 +18,7 @@ if(isset($_POST["submittedForm"])){
 }
 
 if(isset($display_link)){
-    echo "Your group create link is $display_link<BR><BR>";
+    echo "Your group create link is:<BR><textarea class='form-control'>$display_link</textarea><BR><BR>";
 }
 ?>
 <form method="POST">
