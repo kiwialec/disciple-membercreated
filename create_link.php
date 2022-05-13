@@ -1,6 +1,6 @@
 <?php
 require_once("lib/encrypt.php");
-
+require_once("template/header.html");
 if(isset($_POST["submittedForm"])){
     $allowedVisibilityTypes = [];
     if($_POST["visibilitySecret"] == "on") $allowedVisibilityTypes[] = "secret";
@@ -32,3 +32,6 @@ if(isset($display_link)){
     <input type=checkbox name="visibilityMandatory"> Mandatory<br>
     <input type="submit" name="submittedForm" value="Create Link">
 </form>
+
+<?php
+require_once("template/footer.html");
