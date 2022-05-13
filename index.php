@@ -25,22 +25,23 @@ if(isset($_POST["submittedForm"]) AND $authenticated_user["status"] === true){
         "apiHost" => $mc["decrypted_data"]["apiHost"],
         "apiKey" => $mc["decrypted_data"]["apiKey"],
         "groupName" => $_POST["groupName"],
-        "groupDescription" => $_POST["groupDescription"]
+        "groupDescription" => $_POST["groupDescription"],
+        "groupVisibility" => $_POST["groupVisibility"]
     ]);
     echo "Your group has been created!";
     exit;
 }
 ?>
-<form method="POST">
+<form method="POST" class="needs-validation">
     <h3 style="margin-left: 3rem!important;margin-top:100px">Create a New Group</h3>
     <div class="form-outline m-5">
-        <input type="text" id="groupName" name="groupName" class="form-control" />
+        <input type="text" id="groupName" name="groupName" class="form-control" required />
         <label class="form-label" for="groupName">Group Name</label>
         <div class="form-helper">Give your group a name to make it stand out</div>
     </div>
 
     <div class="form-outline m-5">
-        <textarea class="form-control" name="groupDescription" id="groupDescription" rows="4"></textarea>
+        <textarea class="form-control" name="groupDescription" id="groupDescription" rows="4" required></textarea>
         <label class="form-label" for="groupDescription">Group Description</label>
         <div class="form-helper">A sentence or two about what members can expect when they join.</div>
     </div>
@@ -78,7 +79,7 @@ if(isset($_POST["submittedForm"]) AND $authenticated_user["status"] === true){
                         $thisChecked = false;
                     }
                     echo '<div class="form-check">
-                        <input class="form-check-input" type="radio" name="visibilitySetting" id="visibilitySetting'.$key.'" '.(($thisChecked) ? "checked" : "").'/>
+                        <input class="form-check-input" type="radio" name="visibilitySetting" id="visibilitySetting'.$key.'" '.(($thisChecked) ? "checked" : "").' required />
                         <label class="form-check-label" for="visibilitySetting'.$key.'"> <strong>'.$val["label"].'</strong>: '.$val["description"].'</label>
                     </div>';
                 }
@@ -89,7 +90,6 @@ if(isset($_POST["submittedForm"]) AND $authenticated_user["status"] === true){
     </div>
     <input type="submit" class="btn btn-primary" style="margin-left: 3rem!important;" name="submittedForm" value="Create Group">
 </form>
-
 
     
 <?php

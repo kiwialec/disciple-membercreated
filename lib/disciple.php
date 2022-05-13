@@ -6,7 +6,7 @@ function discipleCreateGroup($params){
         "body" => [
             "name" => $params["groupName"],
             "description" => $params["groupDescription"],
-            "membership_type" => "secret",
+            "membership_type" => $params["groupVisibility"],
             "posting_permission" => "everyone"
         ],
         "apiKey" => $params["apiKey"]
