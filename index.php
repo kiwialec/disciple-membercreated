@@ -50,28 +50,35 @@ if(isset($_POST["submittedForm"]) AND $authenticated_user["status"] === true){
 
         <?php
             $visibilityTypes = [
-                "mandatory" => [
-                    "label" => "Mandatory",
-                    "description" => "test"
-                ],
-                "public" => [
-                    "label" => "Public",
+                "secret" => [
+                    "label" => "Secret",
                     "description" => "test"
                 ],
                 "private" => [
                     "label" => "Private",
                     "description" => "test"
                 ],
-                "secret" => [
-                    "label" => "Secret",
+                "public" => [
+                    "label" => "Public",
                     "description" => "test"
-                ]
-                ];
+                ],
+                "mandatory" => [
+                    "label" => "Mandatory",
+                    "description" => "test"
+                ],
+                
+            ];
+            $isCheckedSet = false;
             foreach($visibilityTypes as $key => $val){
                 if(!isset($mc["decrypted_data"]["allowed_visibility"]) OR in_array($key,$mc["decrypted_data"]["allowed_visibility"])){
-
+                    if(!$isCheckedSet){
+                        $isCheckedSet = true;
+                        $thisChecked = true;
+                    }else{
+                        $thisChecked = false;
+                    }
                     echo '<div class="form-check">
-                        <input class="form-check-input" type="radio" name="visibilitySetting" id="visibilitySetting'.$key.'" />
+                        <input class="form-check-input" type="radio" name="visibilitySetting" id="visibilitySetting'.$key.'" '.($thisChecked) ? "checked" : "".'/>
                         <label class="form-check-label" for="visibilitySetting'.$key.'"> '.$val["label"].'</label>
                     </div>';
                 }
