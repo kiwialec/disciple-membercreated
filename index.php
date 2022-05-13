@@ -45,8 +45,9 @@ if(isset($_POST["submittedForm"]) AND $authenticated_user["status"] === true){
         <div class="form-helper">A sentence or two about what members can expect when they join.</div>
     </div>
 
-
-        <select class="select" name="groupVisibility" id="groupVisibility" >
+    <div class="form-outline m-5">
+        <strong>Group Visibility</strong><BR>
+        <select class="form-control " name="groupVisibility" id="groupVisibility" >
         <?php
             $visibilityTypes = [
                 "mandatory" => [
@@ -74,7 +75,7 @@ if(isset($_POST["submittedForm"]) AND $authenticated_user["status"] === true){
         ?>
             
         </select>
-
+    </div>
     <input type="submit" class="btn btn-primary" style="margin-left: 3rem!important;" name="submittedForm" value="Create Group">
 </form>
 
