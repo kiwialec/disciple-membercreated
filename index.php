@@ -1,19 +1,21 @@
 <?php
-require_once("authenticated_links.php");
-require_once("disciple.php");
+require_once("lib/decrypt.php");
+require_once("lib/disciple.php");
+require_once("auth_header.php");
 
 require_once("template/header.html");
 
 $mc = getEncryptedData(["dataVar" => "_mc", "secret"=> getenv("secretEncryptKey")]);
 
-if($mc["status"] === false){
-    echo "It looks like this link is broken! Variables failed";
+$authenticated_user = isAuthenticated($mc);
+if($authenticated_user["status"] === false){
+    echo $authenticated_user["error"];
     exit;
 }
 
-$authenticated_user = getEncryptedData(["dataVar" => "_dm", "secret" => $mc["decrypted_data"]["authenticatedLinkSecret"]]);
-if($authenticated_user["status"] === false){
-    echo "You don't have the correct authorisation to do this.";
+$authentication_check = isAuthorized($mc, $authenticated_user);
+if($authentication_check["status"] === false){
+    echo $authentication_check["error"];
     exit;
 }
 
@@ -42,6 +44,36 @@ if(isset($_POST["submittedForm"]) AND $authenticated_user["status"] === true){
         <label class="form-label" for="groupDescription">Group Description</label>
         <div class="form-helper">A sentence or two about what members can expect when they join.</div>
     </div>
+
+
+        <select class="select" name="groupVisibility" id="groupVisibility" >
+        <?php
+            $visibilityTypes = [
+                "mandatory" => [
+                    "label" => "Mandatory",
+                    "description" => "test"
+                ],
+                "public" => [
+                    "label" => "Public",
+                    "description" => "test"
+                ],
+                "private" => [
+                    "label" => "Private",
+                    "description" => "test"
+                ],
+                "secret" => [
+                    "label" => "Secret",
+                    "description" => "test"
+                ]
+                ];
+            foreach($visibilityTypes as $key => $val){
+                if(!isset($mc["decrypted_data"]["allowed_visibility"]) OR in_array($key,$mc["decrypted_data"]["allowed_visibility"])){
+                    echo "<option value='$key'>{$val["label"]}</option>";
+                }
+            }
+        ?>
+            
+        </select>
 
     <input type="submit" class="btn btn-primary" style="margin-left: 3rem!important;" name="submittedForm" value="Create Group">
 </form>
