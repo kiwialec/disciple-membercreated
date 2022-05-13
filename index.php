@@ -57,7 +57,7 @@ if(isset($_POST["submittedForm"]) AND $authenticated_user["status"] === true){
                 ],
                 "private" => [
                     "label" => "Private",
-                    "description" => "All community members can find this group and request to join. Only members can see posts and engage."
+                    "description" => "All community members can find this group and request to join. Only group members can see posts and engage."
                 ],
                 "public" => [
                     "label" => "Public",
