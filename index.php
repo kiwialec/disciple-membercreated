@@ -79,7 +79,7 @@ if(isset($_POST["submittedForm"]) AND $authenticated_user["status"] === true){
                         $thisChecked = false;
                     }
                     echo '<div class="form-check">
-                        <input class="form-check-input" type="radio" name="visibilitySetting" value="'.$key.'" id="visibilitySetting'.$key.'" '.(($thisChecked) ? "checked" : "").' required />
+                        <input class="form-check-input" type="radio" name="groupVisibility" value="'.$key.'" id="visibilitySetting'.$key.'" '.(($thisChecked) ? "checked" : "").' required />
                         <label class="form-check-label" for="visibilitySetting'.$key.'"> <strong>'.$val["label"].'</strong>: '.$val["description"].'</label>
                     </div>';
                 }
