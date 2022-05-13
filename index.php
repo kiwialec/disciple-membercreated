@@ -35,7 +35,7 @@ if(isset($_POST["submittedForm"]) AND $authenticated_user["status"] === true){
 <form method="POST" class="needs-validation">
     <h3 style="margin-left: 3rem!important;margin-top:100px">Create a New Group</h3>
     <div class="form-outline m-5">
-        <input type="text" id="groupName" name="groupName" class="form-control" required />
+        <input type="text" id="groupName" name="groupName" class="form-control" required maxlength="32" />
         <label class="form-label" for="groupName">Group Name</label>
         <div class="form-helper">Give your group a name to make it stand out</div>
     </div>
@@ -79,7 +79,7 @@ if(isset($_POST["submittedForm"]) AND $authenticated_user["status"] === true){
                         $thisChecked = false;
                     }
                     echo '<div class="form-check">
-                        <input class="form-check-input" type="radio" name="visibilitySetting" id="visibilitySetting'.$key.'" '.(($thisChecked) ? "checked" : "").' required />
+                        <input class="form-check-input" type="radio" name="visibilitySetting" value="'.$key.'" id="visibilitySetting'.$key.'" '.(($thisChecked) ? "checked" : "").' required />
                         <label class="form-check-label" for="visibilitySetting'.$key.'"> <strong>'.$val["label"].'</strong>: '.$val["description"].'</label>
                     </div>';
                 }
