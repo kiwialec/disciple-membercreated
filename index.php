@@ -47,7 +47,7 @@ if(isset($_POST["submittedForm"]) AND $authenticated_user["status"] === true){
 
     <div class="form-outline m-5">
         <strong>Group Visibility</strong><BR>
-        <select class="form-control " name="groupVisibility" id="groupVisibility" >
+
         <?php
             $visibilityTypes = [
                 "mandatory" => [
@@ -69,12 +69,16 @@ if(isset($_POST["submittedForm"]) AND $authenticated_user["status"] === true){
                 ];
             foreach($visibilityTypes as $key => $val){
                 if(!isset($mc["decrypted_data"]["allowed_visibility"]) OR in_array($key,$mc["decrypted_data"]["allowed_visibility"])){
-                    echo "<option value='$key'>{$val["label"]}</option>";
+
+                    echo '<div class="form-check">
+                        <input class="form-check-input" type="radio" name="visibilitySetting" id="visibilitySetting'.$key.'" />
+                        <label class="form-check-label" for="visibilitySetting'.$key.'"> '.$val["label"].'</label>
+                    </div>';
                 }
             }
         ?>
             
-        </select>
+            
     </div>
     <input type="submit" class="btn btn-primary" style="margin-left: 3rem!important;" name="submittedForm" value="Create Group">
 </form>
