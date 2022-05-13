@@ -52,19 +52,19 @@ if(isset($_POST["submittedForm"]) AND $authenticated_user["status"] === true){
             $visibilityTypes = [
                 "secret" => [
                     "label" => "Secret",
-                    "description" => "test"
+                    "description" => "Only group members can see this group"
                 ],
                 "private" => [
                     "label" => "Private",
-                    "description" => "test"
+                    "description" => "All community members can find this group and request to join. Only members can see posts and engage."
                 ],
                 "public" => [
                     "label" => "Public",
-                    "description" => "test"
+                    "description" => "All community members can find this group and see content. Anyone can join and engage."
                 ],
                 "mandatory" => [
                     "label" => "Mandatory",
-                    "description" => "test"
+                    "description" => "All community members are a part of this group and they cannot leave."
                 ],
                 
             ];
@@ -79,7 +79,7 @@ if(isset($_POST["submittedForm"]) AND $authenticated_user["status"] === true){
                     }
                     echo '<div class="form-check">
                         <input class="form-check-input" type="radio" name="visibilitySetting" id="visibilitySetting'.$key.'" '.(($thisChecked) ? "checked" : "").'/>
-                        <label class="form-check-label" for="visibilitySetting'.$key.'"> '.$val["label"].'</label>
+                        <label class="form-check-label" for="visibilitySetting'.$key.'"> <strong>'.$val["label"].'</strong>: '.$val["description"].'</label>
                     </div>';
                 }
             }
