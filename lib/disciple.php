@@ -11,7 +11,7 @@ function discipleCreateGroup($params){
         ],
         "apiKey" => $params["apiKey"]
     ]);
-
+    var_dump($createdGroup);
     $newGroupKey = $createdGroup["group"]["key"];
 
     $addMember = discipleApi([
