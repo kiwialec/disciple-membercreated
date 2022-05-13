@@ -22,7 +22,11 @@ if(isset($display_link)){
 }
 ?>
 <form method="POST">
-
+    <style>
+        .form-outline {
+            margin-bottom: 30px;
+        }
+    </style>
     <div class="form-outline ">
         <input type="text" id="groupName" name="apiHost" class="form-control"  />
         <label class="form-label" for="apiHost">Community URL</label>
